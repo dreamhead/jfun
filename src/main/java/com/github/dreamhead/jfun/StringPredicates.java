@@ -1,6 +1,7 @@
 package com.github.dreamhead.jfun;
 
 import com.google.common.base.Predicate;
+import com.google.common.base.Strings;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 import static com.google.common.base.Predicates.not;
@@ -95,7 +96,7 @@ public class StringPredicates {
 
         @Override
         public boolean apply(String input) {
-            return input == null || "".equals(input);
+            return Strings.isNullOrEmpty(input);
         }
 
         @Override

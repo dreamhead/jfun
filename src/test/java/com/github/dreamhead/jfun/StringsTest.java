@@ -59,10 +59,11 @@ public class StringsTest {
 
     @Test
     public void should_trim() {
-        List<String> strings = of("foo ", " bar", " foobar ");
+        List<String> strings = newArrayList("foo ", " bar", " foobar ", null);
         Iterable<String> filtered = transform(strings, trim());
         assertThat(get(filtered, 0), is("foo"));
         assertThat(get(filtered, 1), is("bar"));
         assertThat(get(filtered, 2), is("foobar"));
+        assertThat(get(filtered, 3), nullValue());
     }
 }
