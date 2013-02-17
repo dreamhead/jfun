@@ -1,0 +1,42 @@
+package com.github.dreamhead.jfun;
+
+import org.junit.Test;
+
+import java.util.List;
+
+import static com.github.dreamhead.jfun.NumberPredicates.lessThan;
+import static com.google.common.collect.ImmutableList.of;
+import static com.google.common.collect.Iterables.filter;
+import static com.google.common.collect.Iterables.getFirst;
+import static org.hamcrest.CoreMatchers.is;
+import static org.junit.Assert.assertThat;
+
+public class NumbersTest {
+    @Test
+    public void should_filter_less_than_int() {
+        List<Integer> ints = of(1, 2, 3);
+        Iterable<Integer> filter = filter(ints, lessThan(2));
+        assertThat(getFirst(filter, 0), is(1));
+    }
+
+    @Test
+    public void should_filter_less_than_double() {
+        List<Integer> ints = of(1, 2, 3);
+        Iterable<Integer> filter = filter(ints, lessThan(2.0));
+        assertThat(getFirst(filter, 0), is(1));
+    }
+
+    @Test
+    public void should_filter_less_than_long() {
+        List<Integer> ints = of(1, 2, 3);
+        Iterable<Integer> filter = filter(ints, lessThan(2L));
+        assertThat(getFirst(filter, 0), is(1));
+    }
+
+    @Test
+    public void should_filter_less_than_float() {
+        List<Integer> ints = of(1, 2, 3);
+        Iterable<Integer> filter = filter(ints, lessThan(2.0f));
+        assertThat(getFirst(filter, 0), is(1));
+    }
+}
