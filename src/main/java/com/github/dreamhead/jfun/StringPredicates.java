@@ -5,6 +5,7 @@ import com.google.common.base.Strings;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 import static com.google.common.base.Predicates.not;
+import static com.google.common.base.Strings.isNullOrEmpty;
 
 public class StringPredicates {
     private static Predicate<String> IS_EMPTY_PREDICATE = new StringIsEmptyPredicate();
@@ -96,7 +97,7 @@ public class StringPredicates {
 
         @Override
         public boolean apply(String input) {
-            return Strings.isNullOrEmpty(input);
+            return isNullOrEmpty(input);
         }
 
         @Override
