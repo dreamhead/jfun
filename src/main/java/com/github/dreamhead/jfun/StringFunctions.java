@@ -3,8 +3,9 @@ package com.github.dreamhead.jfun;
 import com.google.common.base.Function;
 
 public class StringFunctions {
-    public static final StringToIntFunction STRING_TO_INT_FUNCTION = new StringToIntFunction();
-    public static final StringTrimFunction STRING_TRIM_FUNCTION = new StringTrimFunction();
+    private static final Function<String, Integer> STRING_TO_INT_FUNCTION = new StringToIntFunction();
+    private static final Function<String, String> STRING_TRIM_FUNCTION = new StringTrimFunction();
+    private static final Function<String, String> STRING_TO_UPPER_CASE_FUNCTION = new StringToUpperCaseFunction();
 
     public static Function<String, Integer> toInt() {
         return STRING_TO_INT_FUNCTION;
@@ -12,6 +13,10 @@ public class StringFunctions {
 
     public static Function<String, String> trim() {
         return STRING_TRIM_FUNCTION;
+    }
+
+    public static Function<String, String> toUpperCase() {
+        return STRING_TO_UPPER_CASE_FUNCTION;
     }
 
 
@@ -56,6 +61,28 @@ public class StringFunctions {
         @Override
         public String toString() {
             return "StringTrim";
+        }
+    }
+
+    private static class StringToUpperCaseFunction implements Function<String, String> {
+        @Override
+        public String apply(String input) {
+            return input == null ? null : input.toUpperCase();
+        }
+
+        @Override
+        public boolean equals(Object object) {
+            return object instanceof StringToUpperCaseFunction;
+        }
+
+        @Override
+        public int hashCode() {
+            return this.getClass().hashCode();
+        }
+
+        @Override
+        public String toString() {
+            return "StringToUpperCase";
         }
     }
 }

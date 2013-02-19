@@ -5,6 +5,7 @@ import org.junit.Test;
 import java.util.List;
 
 import static com.github.dreamhead.jfun.StringFunctions.toInt;
+import static com.github.dreamhead.jfun.StringFunctions.toUpperCase;
 import static com.github.dreamhead.jfun.StringFunctions.trim;
 import static com.google.common.collect.ImmutableList.of;
 import static com.google.common.collect.Iterables.get;
@@ -26,11 +27,22 @@ public class StringFunctionsTest {
 
     @Test
     public void should_trim() {
+        // newArrayList for null
         List<String> strings = newArrayList("foo ", " bar", " foobar ", null);
-        Iterable<String> filtered = transform(strings, trim());
-        assertThat(get(filtered, 0), is("foo"));
-        assertThat(get(filtered, 1), is("bar"));
-        assertThat(get(filtered, 2), is("foobar"));
-        assertThat(get(filtered, 3), nullValue());
+        Iterable<String> transformed = transform(strings, trim());
+        assertThat(get(transformed, 0), is("foo"));
+        assertThat(get(transformed, 1), is("bar"));
+        assertThat(get(transformed, 2), is("foobar"));
+        assertThat(get(transformed, 3), nullValue());
+    }
+
+    @Test
+    public void should_to_upper_case() {
+        // newArrayList for null
+        List<String> strings = newArrayList("foo", "bar", null);
+        Iterable<String> transformed = transform(strings, toUpperCase());
+        assertThat(get(transformed, 0), is("FOO"));
+        assertThat(get(transformed, 1), is("BAR"));
+        assertThat(get(transformed, 2), nullValue());
     }
 }
