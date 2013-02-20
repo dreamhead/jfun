@@ -4,10 +4,7 @@ import org.junit.Test;
 
 import java.util.List;
 
-import static com.github.dreamhead.jfun.StringPredicates.startsWith;
-import static com.github.dreamhead.jfun.StringPredicates.endsWith;
-import static com.github.dreamhead.jfun.StringPredicates.isEmptyString;
-import static com.github.dreamhead.jfun.StringPredicates.notEmptyString;
+import static com.github.dreamhead.jfun.StringPredicates.*;
 import static com.google.common.collect.ImmutableList.of;
 import static com.google.common.collect.Iterables.filter;
 import static com.google.common.collect.Iterables.get;
