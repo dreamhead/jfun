@@ -4,9 +4,7 @@ import org.junit.Test;
 
 import java.util.List;
 
-import static com.github.dreamhead.jfun.StringFunctions.toInt;
-import static com.github.dreamhead.jfun.StringFunctions.toUpperCase;
-import static com.github.dreamhead.jfun.StringFunctions.trim;
+import static com.github.dreamhead.jfun.StringFunctions.*;
 import static com.google.common.collect.ImmutableList.of;
 import static com.google.common.collect.Iterables.get;
 import static com.google.common.collect.Iterables.transform;
