@@ -37,10 +37,20 @@ public class StringFunctionsTest {
     @Test
     public void should_to_upper_case() {
         // newArrayList for null
-        List<String> strings = newArrayList("foo", "bar", null);
+        List<String> strings = newArrayList("Foo", "Bar", null);
         Iterable<String> transformed = transform(strings, toUpperCase());
         assertThat(get(transformed, 0), is("FOO"));
         assertThat(get(transformed, 1), is("BAR"));
+        assertThat(get(transformed, 2), nullValue());
+    }
+
+    @Test
+    public void should_to_lower_case() {
+        // newArrayList for null
+        List<String> strings = newArrayList("Foo", "Bar", null);
+        Iterable<String> transformed = transform(strings, toLowerCase());
+        assertThat(get(transformed, 0), is("foo"));
+        assertThat(get(transformed, 1), is("bar"));
         assertThat(get(transformed, 2), nullValue());
     }
 }
