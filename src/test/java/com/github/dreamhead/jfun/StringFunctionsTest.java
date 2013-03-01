@@ -24,6 +24,15 @@ public class StringFunctionsTest {
     }
 
     @Test
+    public void should_convert_string_to_long() {
+        List<String> strings = of("1", "2", "3");
+        Iterable<Long> longs = transform(strings, toLong());
+        assertThat(get(longs, 0), is(1L));
+        assertThat(get(longs, 1), is(2L));
+        assertThat(get(longs, 2), is(3L));
+    }
+
+    @Test
     public void should_trim() {
         // newArrayList for null
         List<String> strings = newArrayList("foo ", " bar", " foobar ", null);

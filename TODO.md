@@ -554,8 +554,10 @@ match
 toInt
 </th>
 <td>
+&#10003;
 </td>
 <td>
+jfun
 </td>
 <td>
 </td>
@@ -566,8 +568,10 @@ toInt
 toLong
 </th>
 <td>
+&#10003;
 </td>
 <td>
+jfun
 </td>
 <td>
 </td>
@@ -615,8 +619,10 @@ jfun
 toLowerCase
 </th>
 <td>
+&#10003;
 </td>
 <td>
+jfun
 </td>
 <td>
 </td>

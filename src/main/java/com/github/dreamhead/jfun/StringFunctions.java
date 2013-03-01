@@ -4,12 +4,17 @@ import com.google.common.base.Function;
 
 public class StringFunctions {
     private static final Function<String, Integer> STRING_TO_INT_FUNCTION = new StringToIntFunction();
+    private static final Function<String, Long> STRING_TO_LONG_FUNCTION = new StringToLongFunction();
     private static final Function<String, String> STRING_TRIM_FUNCTION = new StringTrimFunction();
     private static final Function<String, String> STRING_TO_UPPER_CASE_FUNCTION = new StringToUpperCaseFunction();
     private static final Function<String, String> STRING_TO_LOWER_CASE_FUNCTION = new StringToLowerCaseFunction();
 
     public static Function<String, Integer> toInt() {
         return STRING_TO_INT_FUNCTION;
+    }
+
+    public static Function<String, Long> toLong() {
+        return STRING_TO_LONG_FUNCTION;
     }
 
     public static Function<String, String> trim() {
@@ -44,6 +49,28 @@ public class StringFunctions {
         @Override
         public String toString() {
             return "StringToInt";
+        }
+    }
+
+    private static class StringToLongFunction implements Function<String, Long> {
+        @Override
+        public Long apply(String input) {
+            return Long.parseLong(input);
+        }
+
+        @Override
+        public boolean equals(Object object) {
+            return object instanceof StringToLongFunction;
+        }
+
+        @Override
+        public int hashCode() {
+            return this.getClass().hashCode();
+        }
+
+        @Override
+        public String toString() {
+            return "StringToLong";
         }
     }
 
