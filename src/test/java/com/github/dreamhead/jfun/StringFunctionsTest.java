@@ -33,6 +33,15 @@ public class StringFunctionsTest {
     }
 
     @Test
+    public void should_convert_string_to_float() {
+        List<String> strings = of("1.5", "2.3", "3.1");
+        Iterable<Float> longs = transform(strings, toFloat());
+        assertThat(get(longs, 0), is(1.5f));
+        assertThat(get(longs, 1), is(2.3f));
+        assertThat(get(longs, 2), is(3.1f));
+    }
+
+    @Test
     public void should_trim() {
         // newArrayList for null
         List<String> strings = newArrayList("foo ", " bar", " foobar ", null);
