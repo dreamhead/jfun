@@ -6,7 +6,7 @@ import static java.lang.String.format;
 
 public abstract class DoublePredicate implements Predicate<Number> {
 
-    protected double number;
+    protected final double number;
 
     public DoublePredicate(double number) {
         this.number = number;

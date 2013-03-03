@@ -3,13 +3,13 @@ package com.github.dreamhead.jfun;
 import com.google.common.base.Function;
 
 public class StringFunctions {
-    private static final Function<String, Integer> STRING_TO_INT_FUNCTION = new StringToIntFunction();
-    private static final Function<String, Long> STRING_TO_LONG_FUNCTION = new StringToLongFunction();
-    private static final Function<String, Float> STRING_TO_FLOAT_FUNCTION = new StringToFloatFunction();
-    private static final Function<String, Double> STRING_TO_DOUBLE_FUNCTION = new StringToDoubleFunction();
-    private static final Function<String, String> STRING_TRIM_FUNCTION = new StringTrimFunction();
-    private static final Function<String, String> STRING_TO_UPPER_CASE_FUNCTION = new StringToUpperCaseFunction();
-    private static final Function<String, String> STRING_TO_LOWER_CASE_FUNCTION = new StringToLowerCaseFunction();
+    private static final Function<String, Integer> STRING_TO_INT_FUNCTION = new StringToInt();
+    private static final Function<String, Long> STRING_TO_LONG_FUNCTION = new StringToLong();
+    private static final Function<String, Float> STRING_TO_FLOAT_FUNCTION = new StringToFloat();
+    private static final Function<String, Double> STRING_TO_DOUBLE_FUNCTION = new StringToDouble();
+    private static final Function<String, String> STRING_TRIM_FUNCTION = new StringTrim();
+    private static final Function<String, String> STRING_TO_UPPER_CASE_FUNCTION = new StringToUpper();
+    private static final Function<String, String> STRING_TO_LOWER_CASE_FUNCTION = new StringToLowerCase();
 
     public static Function<String, Integer> toInt() {
         return STRING_TO_INT_FUNCTION;
@@ -39,158 +39,52 @@ public class StringFunctions {
         return STRING_TO_LOWER_CASE_FUNCTION;
     }
 
-
-    private static class StringToIntFunction implements Function<String, Integer> {
+    private static class StringToInt extends NoArityFunction<String, Integer> {
         @Override
         public Integer apply(String input) {
             return Integer.parseInt(input);
         }
-
-        @Override
-        public boolean equals(Object object) {
-            return object instanceof StringToIntFunction;
-        }
-
-        @Override
-        public int hashCode() {
-            return this.getClass().hashCode();
-        }
-
-        @Override
-        public String toString() {
-            return "StringToInt";
-        }
     }
 
-    private static class StringToLongFunction implements Function<String, Long> {
+    private static class StringToLong extends NoArityFunction<String, Long> {
         @Override
         public Long apply(String input) {
             return Long.parseLong(input);
         }
-
-        @Override
-        public boolean equals(Object object) {
-            return object instanceof StringToLongFunction;
-        }
-
-        @Override
-        public int hashCode() {
-            return this.getClass().hashCode();
-        }
-
-        @Override
-        public String toString() {
-            return "StringToLong";
-        }
     }
 
-    private static class StringToFloatFunction implements Function<String, Float> {
+    private static class StringToFloat extends NoArityFunction<String, Float> {
         @Override
         public Float apply(String input) {
             return Float.parseFloat(input);
         }
-
-        @Override
-        public int hashCode() {
-            return this.getClass().hashCode();
-        }
-
-        @Override
-        public boolean equals(Object obj) {
-            return obj instanceof StringToFloatFunction;
-        }
-
-        @Override
-        public String toString() {
-            return "StringToFloat";
-        }
     }
 
-    private static class StringToDoubleFunction implements Function<String, Double> {
-
+    private static class StringToDouble extends NoArityFunction<String, Double> {
+        @Override
         public Double apply(String input) {
             return Double.parseDouble(input);
         }
-
-        @Override
-        public int hashCode() {
-            return this.getClass().hashCode();
-        }
-
-        @Override
-        public boolean equals(Object obj) {
-            return obj instanceof StringToDoubleFunction;
-        }
-
-        @Override
-        public String toString() {
-            return "StringToDouble";
-        }
     }
 
-    private static class StringTrimFunction implements Function<String, String> {
+    private static class StringTrim implements Function<String, String> {
         @Override
         public String apply(String input) {
             return input == null ? null : input.trim();
         }
-
-        @Override
-        public boolean equals(Object object) {
-            return object instanceof StringToIntFunction;
-        }
-
-        @Override
-        public int hashCode() {
-            return this.getClass().hashCode();
-        }
-
-        @Override
-        public String toString() {
-            return "StringTrim";
-        }
     }
 
-    private static class StringToUpperCaseFunction implements Function<String, String> {
+    private static class StringToUpper implements Function<String, String> {
         @Override
         public String apply(String input) {
             return input == null ? null : input.toUpperCase();
         }
-
-        @Override
-        public boolean equals(Object object) {
-            return object instanceof StringToUpperCaseFunction;
-        }
-
-        @Override
-        public int hashCode() {
-            return this.getClass().hashCode();
-        }
-
-        @Override
-        public String toString() {
-            return "StringToUpperCase";
-        }
     }
 
-    private static class StringToLowerCaseFunction implements Function<String, String> {
+    private static class StringToLowerCase implements Function<String, String> {
         @Override
         public String apply(String input) {
             return input == null ? null : input.toLowerCase();
-        }
-
-        @Override
-        public boolean equals(Object object) {
-            return object instanceof StringToUpperCaseFunction;
-        }
-
-        @Override
-        public int hashCode() {
-            return this.getClass().hashCode();
-        }
-
-        @Override
-        public String toString() {
-            return "StringToLowerCase";
         }
     }
 }
