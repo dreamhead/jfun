@@ -2,6 +2,8 @@ package com.github.dreamhead.jfun;
 
 import com.google.common.base.Function;
 
+import static java.lang.String.format;
+
 public class StringFunctions {
     private static final Function<String, Integer> STRING_TO_INT_FUNCTION = new StringToInt();
     private static final Function<String, Long> STRING_TO_LONG_FUNCTION = new StringToLong();
@@ -39,6 +41,10 @@ public class StringFunctions {
         return STRING_TO_LOWER_CASE_FUNCTION;
     }
 
+    public static Function<String, String> replace(String target, String replacement) {
+        return new StringReplace(target, replacement);
+    }
+
     private static class StringToInt extends NoArityFunction<String, Integer> {
         @Override
         public Integer apply(String input) {
@@ -67,24 +73,59 @@ public class StringFunctions {
         }
     }
 
-    private static class StringTrim implements Function<String, String> {
+    private static class StringTrim extends NoArityFunction<String, String> {
         @Override
         public String apply(String input) {
             return input == null ? null : input.trim();
         }
     }
 
-    private static class StringToUpper implements Function<String, String> {
+    private static class StringToUpper extends NoArityFunction<String, String> {
         @Override
         public String apply(String input) {
             return input == null ? null : input.toUpperCase();
         }
     }
 
-    private static class StringToLowerCase implements Function<String, String> {
+    private static class StringToLowerCase extends NoArityFunction<String, String> {
         @Override
         public String apply(String input) {
             return input == null ? null : input.toLowerCase();
+        }
+    }
+
+    private static class StringReplace implements Function<String, String> {
+        private final String target;
+        private final String replacement;
+
+        public StringReplace(String target, String replacement) {
+            this.target = target;
+            this.replacement = replacement;
+        }
+
+        @Override
+        public String apply(String input) {
+            return input == null ? null : input.replace(target, replacement);
+        }
+
+        @Override
+        public int hashCode() {
+            return this.target.hashCode() * 31 + this.replacement.hashCode();
+        }
+
+        @Override
+        public boolean equals(Object obj) {
+            if (obj instanceof StringReplace) {
+                StringReplace that = (StringReplace) obj;
+                return this.target.equals(that.target) && this.replacement.equals(replacement);
+            }
+
+            return false;
+        }
+
+        @Override
+        public String toString() {
+            return format("StringReplace(%s, %s)", target, replacement);
         }
     }
 }

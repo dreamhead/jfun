@@ -80,4 +80,15 @@ public class StringFunctionsTest {
         assertThat(get(transformed, 1), is("bar"));
         assertThat(get(transformed, 2), nullValue());
     }
+
+    @Test
+    public void should_replace_with_replacement() {
+        // newArrayList for null
+        List<String> strings = newArrayList("Foo", "Bar", "FooBar", null);
+        Iterable<String> transformed = transform(strings, replace("Foo", "Bar"));
+        assertThat(get(transformed, 0), is("Bar"));
+        assertThat(get(transformed, 1), is("Bar"));
+        assertThat(get(transformed, 2), is("BarBar"));
+        assertThat(get(transformed, 3), nullValue());
+    }
 }

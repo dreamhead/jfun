@@ -596,8 +596,10 @@ jfun
 toDouble
 </th>
 <td>
+&#10003;
 </td>
 <td>
+jfun
 </td>
 <td>
 </td>
@@ -635,8 +637,10 @@ jfun
 replace
 </th>
 <td>
+&#10003;
 </td>
 <td>
+jfun
 </td>
 <td>
 </td>
