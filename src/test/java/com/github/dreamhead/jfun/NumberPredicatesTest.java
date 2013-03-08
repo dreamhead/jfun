@@ -13,7 +13,7 @@ import static com.google.common.collect.Iterables.getFirst;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
-public class NumbersTest {
+public class NumberPredicatesTest {
     @Test
     public void should_filter_less_than_int() {
         List<Integer> ints = of(1, 2, 3);
