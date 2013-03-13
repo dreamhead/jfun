@@ -5,9 +5,7 @@ import org.junit.Test;
 
 import java.util.List;
 
-import static com.github.dreamhead.jfun.NumberFunctions.doubleToString;
-import static com.github.dreamhead.jfun.NumberFunctions.intToString;
-import static com.github.dreamhead.jfun.NumberFunctions.longToString;
+import static com.github.dreamhead.jfun.NumberFunctions.*;
 import static com.google.common.collect.ImmutableList.of;
 import static com.google.common.collect.Iterables.transform;
 import static org.hamcrest.CoreMatchers.is;
@@ -39,6 +37,16 @@ public class NumberFunctionsTest {
         List<Double> doubles = of(1.1, 2.2, 3.3);
 
         Iterable<String> strings = transform(doubles, doubleToString());
+        assertThat(Iterables.get(strings, 0), is("1.1"));
+        assertThat(Iterables.get(strings, 1), is("2.2"));
+        assertThat(Iterables.get(strings, 2), is("3.3"));
+    }
+
+    @Test
+    public void should_convert_float_to_string() {
+        List<Float> doubles = of(1.1f, 2.2f, 3.3f);
+
+        Iterable<String> strings = transform(doubles, floatToString());
         assertThat(Iterables.get(strings, 0), is("1.1"));
         assertThat(Iterables.get(strings, 1), is("2.2"));
         assertThat(Iterables.get(strings, 2), is("3.3"));
