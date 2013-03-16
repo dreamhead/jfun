@@ -25,6 +25,11 @@ public class StringPredicates {
         return NOT_EMPTY_PREDICATE;
     }
 
+    public static Predicate<String> contains(final String text) {
+        return new StringContainsPredicate(text);
+    }
+
+
     private static class StringStartsWithPredicate extends UnaryPredicate<String> {
         private StringStartsWithPredicate(final String prefix) {
             super(prefix);
@@ -51,6 +56,17 @@ public class StringPredicates {
         @Override
         public boolean apply(String input) {
             return isNullOrEmpty(input);
+        }
+    }
+
+    private static class StringContainsPredicate extends UnaryPredicate<String> {
+        public StringContainsPredicate(String text) {
+            super(text);
+        }
+
+        @Override
+        public boolean apply(String input) {
+            return input != null && input.contains(target);
         }
     }
 }

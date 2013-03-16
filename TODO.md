@@ -419,8 +419,10 @@ jfun
 longToString
 </th>
 <td>
+&#10003;
 </td>
 <td>
+jfun
 </td>
 <td>
 </td>
@@ -431,8 +433,10 @@ longToString
 floatToString
 </th>
 <td>
+&#10003;
 </td>
 <td>
+jfun
 </td>
 <td>
 </td>
@@ -443,8 +447,10 @@ floatToString
 doubleToString
 </th>
 <td>
+&#10003;
 </td>
 <td>
+jfun
 </td>
 <td>
 </td>
@@ -556,8 +562,10 @@ match
 contains
 </th>
 <td>
+&#10003;
 </td>
 <td>
+jfun
 </td>
 <td>
 </td>

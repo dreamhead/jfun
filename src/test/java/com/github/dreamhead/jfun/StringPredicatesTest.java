@@ -46,4 +46,14 @@ public class StringPredicatesTest {
         Iterable<String> filtered = filter(strings, notEmptyString());
         assertThat(get(filtered, 0), is("foo"));
     }
+
+    @Test
+    public void should_contains() {
+        // newArrayList for null
+        List<String> strings = newArrayList("foo", "bar", "foobar", null);
+        Iterable<String> filtered = filter(strings, contains("foo"));
+        assertThat(get(filtered, 0), is("foo"));
+        assertThat(get(filtered, 1), is("foobar"));
+
+    }
 }
