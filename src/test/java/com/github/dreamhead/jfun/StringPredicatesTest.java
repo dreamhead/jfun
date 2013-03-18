@@ -1,13 +1,11 @@
 package com.github.dreamhead.jfun;
 
+import com.google.common.collect.FluentIterable;
 import org.junit.Test;
 
-import java.util.List;
-
 import static com.github.dreamhead.jfun.StringPredicates.*;
+import static com.google.common.collect.FluentIterable.from;
 import static com.google.common.collect.ImmutableList.of;
-import static com.google.common.collect.Iterables.filter;
-import static com.google.common.collect.Iterables.get;
 import static com.google.common.collect.Lists.newArrayList;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.nullValue;
@@ -16,44 +14,39 @@ import static org.junit.Assert.assertThat;
 public class StringPredicatesTest {
     @Test
     public void should_start_with_prefix() {
-        List<String> strings = of("foo", "bar", "foobar");
-        Iterable<String> filtered = filter(strings, startsWith("foo"));
-        assertThat(get(filtered, 0), is("foo"));
-        assertThat(get(filtered, 1), is("foobar"));
+        FluentIterable<String> strings = from(of("foo", "bar", "foobar")).filter(startsWith("foo"));
+        assertThat(strings.get(0), is("foo"));
+        assertThat(strings.get(1), is("foobar"));
     }
 
     @Test
     public void should_end_with_suffix() {
-        List<String> strings = of("foo", "bar", "foobar");
-        Iterable<String> filtered = filter(strings, endsWith("bar"));
-        assertThat(get(filtered, 0), is("bar"));
-        assertThat(get(filtered, 1), is("foobar"));
+        FluentIterable<String> strings = from(of("foo", "bar", "foobar")).filter(endsWith("bar"));
+        assertThat(strings.get(0), is("bar"));
+        assertThat(strings.get(1), is("foobar"));
     }
 
     @Test
     public void should_be_empty() {
         // newArrayList for null
-        List<String> strings = newArrayList("foo", "", null);
-        Iterable<String> filtered = filter(strings, isEmptyString());
-        assertThat(get(filtered, 0), is(""));
-        assertThat(get(filtered, 1), nullValue());
+        FluentIterable<String> strings = from(newArrayList("foo", "", null)).filter(isEmptyString());
+        assertThat(strings.get(0), is(""));
+        assertThat(strings.get(1), nullValue());
     }
 
     @Test
     public void should_be_not_empty() {
         // newArrayList for null
-        List<String> strings = newArrayList("foo", "", null);
-        Iterable<String> filtered = filter(strings, notEmptyString());
-        assertThat(get(filtered, 0), is("foo"));
+        FluentIterable<String> strings = from(newArrayList("foo", "", null)).filter(notEmptyString());
+        assertThat(strings.get(0), is("foo"));
     }
 
     @Test
     public void should_contains() {
         // newArrayList for null
-        List<String> strings = newArrayList("foo", "bar", "foobar", null);
-        Iterable<String> filtered = filter(strings, contains("foo"));
-        assertThat(get(filtered, 0), is("foo"));
-        assertThat(get(filtered, 1), is("foobar"));
+        FluentIterable<String> strings = from(newArrayList("foo", "bar", "foobar", null)).filter(contains("foo"));
+        assertThat(strings.get(0), is("foo"));
+        assertThat(strings.get(1), is("foobar"));
 
     }
 }
