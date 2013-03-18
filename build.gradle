@@ -11,7 +11,7 @@ repositories {
 }
 
 project.ext {
-    guavaVersion = '14.0'
+    guavaVersion = '14.0.1'
     junitVersion = '4.10'
 }
 
