@@ -29,6 +29,10 @@ public class StringPredicates {
         return new StringContainsPredicate(text);
     }
 
+    public static Predicate<String> matches(final String regex) {
+        return new StringMatchesPredicate(regex);
+    }
+
 
     private static class StringStartsWithPredicate extends UnaryPredicate<String> {
         private StringStartsWithPredicate(final String prefix) {
@@ -67,6 +71,17 @@ public class StringPredicates {
         @Override
         public boolean apply(String input) {
             return input != null && input.contains(target);
+        }
+    }
+
+    private static class StringMatchesPredicate extends UnaryPredicate<String> {
+        public StringMatchesPredicate(String regex) {
+            super(regex);
+        }
+
+        @Override
+        public boolean apply(final String input) {
+            return input != null && input.matches(target);
         }
     }
 }

@@ -42,11 +42,18 @@ public class StringPredicatesTest {
     }
 
     @Test
-    public void should_contains() {
+    public void should_contain() {
         // newArrayList for null
         FluentIterable<String> strings = from(newArrayList("foo", "bar", "foobar", null)).filter(contains("foo"));
         assertThat(strings.get(0), is("foo"));
         assertThat(strings.get(1), is("foobar"));
+    }
 
+    @Test
+    public void should_match() {
+        // newArrayList for null
+        FluentIterable<String> strings = from(newArrayList("foo", "bar", "foobar", null)).filter(matches("foo.*"));
+        assertThat(strings.get(0), is("foo"));
+        assertThat(strings.get(1), is("foobar"));
     }
 }
