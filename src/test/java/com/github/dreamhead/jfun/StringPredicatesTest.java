@@ -56,4 +56,12 @@ public class StringPredicatesTest {
         assertThat(strings.get(0), is("foo"));
         assertThat(strings.get(1), is("foobar"));
     }
+
+    @Test
+    public void should_equal_to_ignoring_case() {
+        // newArrayList for null
+        FluentIterable<String> strings = from(newArrayList("foo", "bar", "Foo", null)).filter(equalToIgnoringCase("foo"));
+        assertThat(strings.get(0), is("foo"));
+        assertThat(strings.get(1), is("Foo"));
+    }
 }

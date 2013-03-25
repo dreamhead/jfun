@@ -33,6 +33,9 @@ public class StringPredicates {
         return new StringMatchesPredicate(regex);
     }
 
+    public static Predicate<String> equalToIgnoringCase(final String text) {
+        return new StringEqualToIgnoringCase(text);
+    }
 
     private static class StringStartsWithPredicate extends UnaryPredicate<String> {
         private StringStartsWithPredicate(final String prefix) {
@@ -82,6 +85,17 @@ public class StringPredicates {
         @Override
         public boolean apply(final String input) {
             return input != null && input.matches(target);
+        }
+    }
+
+    private static class StringEqualToIgnoringCase extends UnaryPredicate<String> {
+        public StringEqualToIgnoringCase(String text) {
+            super(text);
+        }
+
+        @Override
+        public boolean apply(String input) {
+            return input != null && input.equalsIgnoreCase(target);
         }
     }
 }
