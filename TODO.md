@@ -1,4 +1,4 @@
-**High Order Function**
+d**High Order Function**
 <table>
 <tr>
 <th>
@@ -147,8 +147,10 @@ guava
 times
 </th>
 <td>
+&#10003;
 </td>
 <td>
+jfun
 </td>
 <td>
 </td>
@@ -449,6 +451,19 @@ jfun
 
 <th>
 doubleToString
+</th>
+<td>
+&#10003;
+</td>
+<td>
+jfun
+</td>
+<td>
+</td>
+</tr>
+
+<th>
+closeTo
 </th>
 <td>
 &#10003;
