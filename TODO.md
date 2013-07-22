@@ -1,4 +1,4 @@
-d**High Order Function**
+**High Order Function**
 <table>
 <tr>
 <th>
